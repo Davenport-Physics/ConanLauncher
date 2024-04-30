@@ -115,8 +115,7 @@
         </div>
     {:else}
         <div class="container w-full flex flex-row justify-center gap-4" transition:fade|local>
-            <OrangeButton text={"Characters"} on:click={goto_characters} />
-            <OrangeButton text={"Chat"} on:click={goto_chat} />
+            <div class="text-white text-2xl bg-orange-800 p-2 rounded shadow-md">Game is active</div>
         </div>
     {/if}
 </div>
