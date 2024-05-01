@@ -1,47 +1,57 @@
-# Svelte + TS + Vite
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+# What is this?
 
-## Recommended IDE Setup
+A Conan Exiles launcher with a fix. Licensed under the GPLv3.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+![image](https://github.com/Davenport-Physics/ConanLauncher/assets/1410579/e0167d91-811e-43d9-9bf0-db5c252eaf19)
 
-## Need an official Svelte framework?
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+# What's the fix?
 
-## Technical considerations
+Have you ever been annoyed by the startup video played when you launch the game? Have you gone out of your way to disable it, only for a pesky update to revert your configuration changes? 
 
-**Why use this over SvelteKit?**
+This launcher disables those startup videos every time you launch the game. You never have to be told you've been left to die, again!
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+# Does it do anything else?
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+The launcher will also attempt to launch steam if steam isn't already running.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+# Public Version
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+This software was originally designed for me, the developer! What that means for you, the user, is that there are features in the master branch that are presently disabled in the public release version.
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+Features such as
 
-**Why include `.vscode/extensions.json`?**
+- Support for writing emotes (for those of you that want spellcheck)
+- Support for the Tot!Chat webhook (for automatically saving other character's emotes)
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+How do I get the master branch version? Ask or consider building it yourself!
 
-**Why enable `allowJs` in the TS template?**
+# Smart Screen
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+Help! It says this software comes from an untrusted publisher! Is it safe to run?
 
-**Why is HMR not preserving my local component state?**
+Well, this requires a nuanced answer. Microsoft now requires software to be digitally signed with a code certificate. Unfortunately, acquiring a code certificate is cost-prohibitive at a staggering $300 a year. This software is available free of charge and was made to scratch a particular itch. Furthermore, the code is available for review and you can build the software yourself.
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+So is it safe to run? You should decide for yourself!
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+Here is a complimentary [virustotal.com report](https://www.virustotal.com/gui/file/d1a7307bfd57ff4241c455fb18f5bbc9b99f459ef662c5031506513811067696/detection)
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+# Build requirements
+
+- Install [Node.JS](https://nodejs.org/en/download/current)
+- Install [Rust](https://www.rust-lang.org/learn/get-started)
+
+# Build
+
+In the directory of the downloaded code, run the following command in cmd
+
 ```
+npm run tauri build
+```
+
+this will place an executable under src-tauri/target/release
+
+
+
+
