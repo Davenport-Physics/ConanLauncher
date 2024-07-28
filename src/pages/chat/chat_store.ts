@@ -31,10 +31,11 @@ export enum ProseStyle {
 }
 
 export enum DialogueEra {
-    OldEnglish        = "Old English",
-    MiddleEnglish     = "Middle English",
-    EarlyModernEnglish = "Early Modern English",
-    ModernEnglish      = "Modern English",
+    OldEnglish           = "Old English",
+    MiddleEnglish        = "Middle English",
+    EarlyModernEnglish   = "Early Modern English",
+    LateVictorianEnglish = "Late Victorian English",
+    ModernEnglish        = "Modern English",
 }
 
 export const character_id = writable<number | undefined>(undefined);

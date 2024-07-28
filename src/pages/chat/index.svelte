@@ -67,13 +67,13 @@
     function get_generate_text(): string {
 
         let character = get_character($character_id!);
-        return `((Generate /me for ${character!.name} using the content below.))\n`;
+        return `((Generate /me for ${character!.name} using the content below. Remember, you should be rewriting the content below and not responding to it.))\n\n`;
 
     }
 
     function get_end_generate_text(): string {
 
-        let t_text = "\n((";
+        let t_text = "\n\n((";
         if ($chat_style != undefined) {
             t_text += ` The writing style should mimic: ${$chat_style}.`;
         }
@@ -87,7 +87,7 @@
         }
 
         if ($dialogue_era != undefined) {
-            t_text += ` The dialogue in the /me, should STRICTLY be: ${$dialogue_era}.`;
+            t_text += ` The dialogue in the /me, should inspired by the: ${$dialogue_era}, though still for modern ears. Rewrite the dialogue to better fit the era.`;
         }
 
         t_text += ` Do not assume details unless I explicitly provide you that information. Avoid making assumptions about relationships between characters or other unstated details.`;
