@@ -4,6 +4,9 @@ use rusqlite::{params, Connection, Result};
 
 use crate::database;
 
+pub mod information;
+pub mod system_prompts;
+
 #[derive(Debug, Deserialize, Serialize, Clone)]
 pub struct Character {
 

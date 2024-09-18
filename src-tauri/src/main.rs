@@ -37,6 +37,11 @@ fn main() {
             database::character::get_characters,
             database::character::add_character,
             database::character::delete_character,
+            database::character::system_prompts::set_character_system_prompt,
+            database::character::system_prompts::get_character_system_prompt,
+            database::character::information::get_all_character_information,
+            database::character::information::add_character_information,
+            database::character::information::delete_character_information,
             webhook::start_webserver,
             texting::set_text_user
         ])
