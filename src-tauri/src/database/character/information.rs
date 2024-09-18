@@ -18,7 +18,7 @@ impl CharacterInformation {
     pub fn add(&self) -> i32 {
 
         let conn = database::connection().unwrap();
-        let QUERY: &str = 
+        const QUERY: &str = 
         "
             INSERT INTO 
                 CharacterInformation (CharacterId, Title, Prompt, Active)
@@ -34,6 +34,33 @@ impl CharacterInformation {
 
     }
 
+    pub fn update(&self) -> Result<(), &'static str> {
+
+        if self.character_information_id.is_none() {
+            return Err("character_information_id is required to update a character information.");
+        }
+
+        let conn = connection().unwrap();
+        const QUERY: &str =
+        "
+            UPDATE
+                CharacterInformation
+            SET
+                Title = ?1,
+                Prompt = ?2,
+                Active = ?3
+            WHERE
+                CharacterInformationId = ?4;
+        ";
+
+        conn
+            .execute(QUERY, params![self.title, self.prompt, self.active, self.character_information_id.unwrap()])
+            .unwrap();
+
+        Ok(())
+
+    }
+
     pub fn delete(&self) -> Result<(), &'static str> {
 
         if self.character_information_id.is_none() {
@@ -41,7 +68,7 @@ impl CharacterInformation {
         }
 
         let conn = connection().unwrap();
-        let QUERY: &str = 
+        const QUERY: &str = 
         "
             DELETE FROM 
                 CharacterInformation
@@ -56,7 +83,7 @@ impl CharacterInformation {
 
     pub fn get_all(character_id: i32) -> Vec<CharacterInformation> {
 
-        let QUERY: &str = 
+        const QUERY: &str = 
         "
             SELECT
                 CharacterInformationId,
@@ -111,4 +138,9 @@ pub fn add_character_information(character_information: CharacterInformation) ->
 #[tauri::command]
 pub fn delete_character_information(character_information: CharacterInformation) -> Result<(), &'static str> {
     character_information.delete()
+}
+
+#[tauri::command]
+pub fn update_character_information(character_information: CharacterInformation) -> Result<(), &'static str> {
+    character_information.update()
 }

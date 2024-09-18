@@ -43,6 +43,7 @@ fn main() {
             database::character::information::get_all_character_information,
             database::character::information::add_character_information,
             database::character::information::delete_character_information,
+            database::character::information::update_character_information,
             webhook::start_webserver,
             texting::set_text_user
         ])
