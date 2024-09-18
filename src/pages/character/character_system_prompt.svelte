@@ -38,6 +38,7 @@
         };
 
         set_character_system_prompt(new_prompt);
+        show_modal = false;
 
     }
 
