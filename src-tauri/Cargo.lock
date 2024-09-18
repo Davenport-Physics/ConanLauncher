@@ -163,6 +163,7 @@ dependencies = [
  "sysinfo",
  "tauri",
  "tauri-build",
+ "toml 0.8.19",
  "urlencoded",
  "windows 0.52.0",
 ]

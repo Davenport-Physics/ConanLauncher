@@ -30,7 +30,18 @@ impl Character {
 
     pub fn fetch_all(conn: &Connection) -> Result<Vec<Character>> {
 
-        let mut stmt = conn.prepare("SELECT CharacterId, Name, Description, Image FROM Characters")?;
+        const QUERY: &str =
+        "
+            SELECT 
+                CC.CharacterId, 
+                CC.Name, 
+                CC.Description, 
+                CC.Image 
+            FROM 
+                Characters CC
+        ";
+
+        let mut stmt = conn.prepare(QUERY)?;
         let character_iter = stmt.query_map([], |row| {
             Ok(Character {
                 character_id: row.get(0)?,

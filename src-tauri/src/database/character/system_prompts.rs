@@ -15,7 +15,7 @@ impl CharacterSystemPrompt {
     pub fn set(&self) {
 
         let conn = database::connection().unwrap();
-        let QUERY: &str = 
+        const QUERY: &str = 
         "
             INSER INTO CharacterSystemPrompts (CharacterId, Prompt)
             VALUES (?1, ?2)
@@ -29,7 +29,7 @@ impl CharacterSystemPrompt {
     pub fn get(character_id: i32) -> Option<CharacterSystemPrompt> {
 
         let conn = database::connection().unwrap();
-        let QUERY: &str = 
+        const QUERY: &str = 
         "
             SELECT 
                 CharacterId, 

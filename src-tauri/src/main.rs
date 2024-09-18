@@ -13,6 +13,7 @@ mod utils;
 mod webhook;
 mod texting;
 mod steam_check;
+mod open_router;
 
 #[macro_use] extern crate lazy_static;
 extern crate iron;

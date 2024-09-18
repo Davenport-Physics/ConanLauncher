@@ -1,4 +1,5 @@
 <script lang="ts">
+
     import { goto } from "@roxi/routify";
     import { characters, type ICharacter } from "../../lib/characters";
     import OrangeButton from "../../lib/_OrangeButton.svelte";
@@ -12,7 +13,7 @@
     }
 
     function on_character_click(character: ICharacter) {
-        //$goto(`/character/${character.character_id}`);
+        $goto(`/character/${character.character_id}`);
     }
 
 </script>
@@ -29,9 +30,9 @@
         {#each $characters as character}
             <!-- svelte-ignore a11y-no-static-element-interactions -->
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div class="px-4 py-2 bg-orange-800 text-white text-xl rounded shadow cursor-pointer w-96 text-center" on:click={() => on_character_click(character)}>
+            <button class="px-4 py-2 bg-orange-800 text-white text-xl rounded shadow cursor-pointer w-96 text-center hover:bg-orange-900" on:click={() => on_character_click(character)}>
                 {character.name}
-            </div>
+            </button>
         {/each}
     </div>
 </div>

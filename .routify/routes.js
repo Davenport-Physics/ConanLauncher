@@ -1,11 +1,11 @@
 
 /**
  * @roxi/routify 2.18.18
- * File generated Wed Sep 18 2024 11:14:18 GMT-0500 (Central Daylight Time)
+ * File generated Wed Sep 18 2024 18:01:04 GMT-0500 (Central Daylight Time)
  */
 
 export const __version = "2.18.18"
-export const __timestamp = "2024-09-18T16:14:18.960Z"
+export const __timestamp = "2024-09-18T23:01:04.376Z"
 
 //buildRoutes
 import { buildClientTree } from "@roxi/routify/runtime/buildRoutes.js"
@@ -24,6 +24,105 @@ export const _tree = {
   "ownMeta": {},
   "absolutePath": "D:/Code/conan-launcher/src/pages/_layout.svelte",
   "children": [
+    {
+      "isFile": false,
+      "isDir": true,
+      "file": "character",
+      "filepath": "/character",
+      "name": "character",
+      "ext": "",
+      "badExt": false,
+      "absolutePath": "D:/Code/conan-launcher/src/pages/character",
+      "children": [
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "[character_id].svelte",
+          "filepath": "/character/[character_id].svelte",
+          "name": "[character_id]",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "D:/Code/conan-launcher/src/pages/character/[character_id].svelte",
+          "importPath": "../src/pages/character/[character_id].svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": false,
+            "prerender": true
+          },
+          "path": "/character/:character_id",
+          "id": "_character__character_id",
+          "component": () => import('../src/pages/character/[character_id].svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "character_information.svelte",
+          "filepath": "/character/character_information.svelte",
+          "name": "character_information",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "D:/Code/conan-launcher/src/pages/character/character_information.svelte",
+          "importPath": "../src/pages/character/character_information.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": false,
+            "prerender": true
+          },
+          "path": "/character/character_information",
+          "id": "_character_character_information",
+          "component": () => import('../src/pages/character/character_information.svelte').then(m => m.default)
+        },
+        {
+          "isFile": true,
+          "isDir": false,
+          "file": "character_system_prompt.svelte",
+          "filepath": "/character/character_system_prompt.svelte",
+          "name": "character_system_prompt",
+          "ext": "svelte",
+          "badExt": false,
+          "absolutePath": "D:/Code/conan-launcher/src/pages/character/character_system_prompt.svelte",
+          "importPath": "../src/pages/character/character_system_prompt.svelte",
+          "isLayout": false,
+          "isReset": false,
+          "isIndex": false,
+          "isFallback": false,
+          "isPage": true,
+          "ownMeta": {},
+          "meta": {
+            "recursive": true,
+            "preload": false,
+            "prerender": true
+          },
+          "path": "/character/character_system_prompt",
+          "id": "_character_character_system_prompt",
+          "component": () => import('../src/pages/character/character_system_prompt.svelte').then(m => m.default)
+        }
+      ],
+      "isLayout": false,
+      "isReset": false,
+      "isIndex": false,
+      "isFallback": false,
+      "isPage": false,
+      "ownMeta": {},
+      "meta": {
+        "recursive": true,
+        "preload": false,
+        "prerender": true
+      },
+      "path": "/character"
+    },
     {
       "isFile": false,
       "isDir": true,

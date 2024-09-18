@@ -1,4 +1,6 @@
 [
+  "/character/character_information",
+  "/character/character_system_prompt",
   "/characters/index",
   "/chat/index",
   "/edit_character/index",
