@@ -16,6 +16,15 @@
     let show_modal: boolean = false;
     let prompt: string = "";
 
+    /*
+    
+        If the modal is not shown, initialize the prompt. Helps with reseting prompt when user closes the modal without saving 
+        
+    */
+    $: if (!show_modal) {
+        init();
+    }
+
     async function init() {
 
         character_system_prompt = await get_character_system_prompt(character_id);

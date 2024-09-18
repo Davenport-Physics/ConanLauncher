@@ -17,7 +17,7 @@ impl CharacterSystemPrompt {
         let conn = database::connection().unwrap();
         const QUERY: &str = 
         "
-            INSER INTO CharacterSystemPrompts (CharacterId, Prompt)
+            INSERT INTO CharacterSystemPrompts (CharacterId, Prompt)
             VALUES (?1, ?2)
             ON CONFLICT (CharacterId) DO UPDATE SET Prompt = ?2;
         ";
