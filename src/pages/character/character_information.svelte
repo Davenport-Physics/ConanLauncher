@@ -91,16 +91,18 @@
     <summary class="bg-white text-2xl px-2 rounded-md select-none border-2 border-orange-800">Character Information</summary>
     <div class="h-1"></div>
 
-    {#each char_info as info}
-        <div class="flex flex-row gap-2 justify-center">
-            <button
-                class="rounded-md border-2 border-orange-800 text-2xl bg-white px-2"
-                on:click={() => {edit(info)}}>{info.title}</button>
-            <button 
-                class="rounded-full px-2 text-2xl bg-red-800 text-white hover:bg-red-900" 
-                on:click={() => {on_delete(info);}}>X</button>
-        </div>
-    {/each}
+    <div class="flex flex-col gap-2">
+        {#each char_info as info}
+            <div class="flex flex-row gap-2 justify-center">
+                <button
+                    class="rounded-md border-2 border-orange-800 text-2xl bg-white px-2"
+                    on:click={() => {edit(info)}}>{info.title}</button>
+                <button 
+                    class="rounded-full px-2 text-2xl bg-red-800 text-white hover:bg-red-900" 
+                    on:click={() => {on_delete(info);}}>X</button>
+            </div>
+        {/each}
+    </div>
 
     <div class="h-1"></div>
     <div class="flex flex-row justify-center">
