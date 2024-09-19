@@ -11,6 +11,7 @@
     import OrangeButton from '../lib/_OrangeButton.svelte';
     import { init_network } from '../lib/network';
     import { init_characters } from '../lib/characters';
+    import { init_api_token } from '../lib/openrouter';
 
     let can_launch = false;
     let battle_eye = $launcher_settings?.battle_eye ?? false;
@@ -94,6 +95,7 @@
         $goto("/characters");
     }
 
+    init_api_token();
     init_network();
     init_characters();
 

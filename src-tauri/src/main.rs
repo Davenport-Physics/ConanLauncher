@@ -30,6 +30,7 @@ fn main() {
             valid_path,
             launch_game, 
             get_launcher_settings, 
+            open_router::get_open_router_api_key,
             conan_hook::start_typing_loop,
             conan_hook::submit_actual_post,
             conan_hook::is_hooked_in,

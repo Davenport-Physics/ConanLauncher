@@ -3,3 +3,4 @@
 /target/
 Settings.toml
 .routify
+open_router.toml

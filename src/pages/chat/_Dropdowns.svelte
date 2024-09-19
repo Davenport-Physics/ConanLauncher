@@ -6,6 +6,7 @@
     import Verbosity from "./_Verbosity.svelte";
     import DialogueEra from "./_DialogueEra.svelte";
     import ProseStyleSelect from "./_ProseStyleSelect.svelte";
+    import Llm from "./_LLM.svelte";
 
 </script>
 
@@ -15,4 +16,5 @@
     <!-- <ProseStyleSelect/> -->
     <Verbosity/>
     <DialogueEra/>
+    <Llm/>
 </div>

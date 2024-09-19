@@ -10,14 +10,21 @@
     import OrangeButton from '../../lib/_OrangeButton.svelte';
     
     import ChatContext from './_ChatContext.svelte';
-    import { character_id, chat_style, verbosity, prose_style, text_chat_looping, dialogue_era } from './chat_store';
-    import { get_character } from '../../lib/characters';
+    import { 
+        character_id, 
+        text_chat_looping, 
+        llm_generator,
+        get_encapsulated_user_text
+    } from './chat_store';
+    
     import { messages } from '../../lib/network';
     import Dropdowns from './_Dropdowns.svelte';
     import Timer from './_Timer.svelte';
+    import LlmGeneration from './_LLMGeneration.svelte';
 
     let text = "";
     let show_confirmation: boolean = false;
+    let show_llm_modal: boolean = false;
 
     $text_chat_looping = false;
 
@@ -55,46 +62,10 @@
 
     function on_cut() {
 
-        let t_text = get_generate_text();
-        t_text += text;
-        t_text += get_end_generate_text();
-
+        let t_text = get_encapsulated_user_text(text);
         window.navigator.clipboard.writeText(t_text);
         text = "";
         
-    }
-
-    function get_generate_text(): string {
-
-        let character = get_character($character_id!);
-        return `((Generate /me for ${character!.name} using the content below. Remember, you should be rewriting the content below and not responding to it.))\n\n`;
-
-    }
-
-    function get_end_generate_text(): string {
-
-        let t_text = "\n\n((";
-        if ($chat_style != undefined) {
-            t_text += ` The writing style should mimic: ${$chat_style}.`;
-        }
-
-        if ($verbosity != undefined) {
-            t_text += ` The /me should be ${$verbosity} in length.`;
-        }
-
-        if ($prose_style != undefined) {
-            t_text += ` The generated prose style should be: ${$prose_style}.`;
-        }
-
-        if ($dialogue_era != undefined) {
-            t_text += ` The dialogue in the /me, should inspired by the: ${$dialogue_era}, though still for modern ears. Rewrite the dialogue to better fit the era.`;
-        }
-
-        t_text += ` Do not assume details unless I explicitly provide you that information. Avoid making assumptions about relationships between characters or other unstated details.`;
-
-        t_text += "))"
-        return t_text;
-
     }
 
     function on_cut_with_context() {
@@ -116,10 +87,8 @@
 
         }
 
-        t_text += get_generate_text();
-        t_text += text;
-        t_text += get_end_generate_text();
-
+        t_text += get_encapsulated_user_text(text);
+        
         window.navigator.clipboard.writeText(t_text);
         text = "";
 
@@ -154,6 +123,22 @@
 
     }
 
+    function on_generate() {
+
+        if ($llm_generator == undefined) {
+            alert("Please select a generator.");
+            return;
+        }
+
+        if ($character_id == undefined) {
+            alert("Please select a character.");
+            return;
+        }
+
+        show_llm_modal = true;
+
+    }
+
     function on_back() {
 
         on_stop();
@@ -176,7 +161,11 @@
     <div class="h-2"></div>
     <div class="grid grid-cols-5 gap-4 w-full">
         <div class="col-span-3">
-            <textarea class="w-full h-80 p-1 outline-none rounded-lg shadow-2xl border-orange-900 border-4" bind:value={text} on:input={on_input}></textarea>
+            <textarea 
+                class="w-full h-80 p-1 outline-none rounded-lg shadow-2xl border-orange-900 border-4" 
+                placeholder="Type your message here."
+                bind:value={text} 
+                on:input={on_input}/>
         </div>
         <div class="col-span-2">
             <ChatContext/>
@@ -185,6 +174,7 @@
     <div class="text-white text-2xl ml-auto">{text.length}/{MAX_CHARACTERS_PER_POST}</div>
     <div class="h-4"></div>
     <div class="flex flex-row gap-2">
+        <OrangeButton text="Generate" on:click={on_generate}/>
         <OrangeButton text="Reset" on:click={on_reset}/>
         <OrangeButton text="Stop" on:click={on_stop} />
         <OrangeButton text="Cut" on:click={on_cut}/>
@@ -202,3 +192,6 @@
         </div>
     {/if}
 </div>
+
+<LlmGeneration bind:text bind:show_llm_modal/>
+

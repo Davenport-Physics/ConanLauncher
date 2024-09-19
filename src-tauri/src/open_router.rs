@@ -24,3 +24,15 @@ impl OpenRouterSettings {
     }
 
 }
+
+#[tauri::command]
+pub fn get_open_router_api_key() -> Option<String> {
+
+    let setting = OpenRouterSettings::from_file();
+
+    match setting {
+        Some(setting) => Some(setting.api_key),
+        None => None
+    }
+
+}
