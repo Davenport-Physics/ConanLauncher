@@ -16,11 +16,12 @@
         llm_generator,
         get_encapsulated_user_text
     } from './chat_store';
-    
+
     import { messages } from '../../lib/network';
     import Dropdowns from './_Dropdowns.svelte';
     import Timer from './_Timer.svelte';
     import LlmGeneration from './_LLMGeneration.svelte';
+    import { get_character } from '../../lib/characters';
 
     let text = "";
     let show_confirmation: boolean = false;
@@ -51,6 +52,8 @@
                 character_id: $character_id,
                 message: text
             };
+
+            $messages = [];
 
             invoke("submit_actual_post", { characterMessage: payload }).then(() => {
                 text = "";

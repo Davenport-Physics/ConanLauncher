@@ -5,9 +5,12 @@ import type { NonStreamingChoice, OpenRouterResponse } from "./openrouter/respon
 import { Result, Ok, Err } from "./result";
 
 export const OPEN_ROUTER_MODELS = [
+    "openai/chatgpt-4o-latest",
     "google/gemini-pro-1.5",
     "google/gemini-flash-1.5",
+    "anthropic/claude-3.5-sonnet",
     "nousresearch/hermes-3-llama-3.1-405b",
+    "meta-llama/llama-3.1-405b-instruct",
     "meta-llama/llama-3.1-70b-instruct"
 ]
 

@@ -42,6 +42,9 @@ export function init_network() {
 
         let new_messages = event.payload as INewMessage[];
 
+        // Filter out messages from the current character
+        /*
+
         let t_character_id = get(character_id);
         let t_characters   = get(characters);
 
@@ -56,6 +59,8 @@ export function init_network() {
             });
 
         }
+            
+        */
 
         messages.update((t_messages) => {
             t_messages.push(...new_messages);

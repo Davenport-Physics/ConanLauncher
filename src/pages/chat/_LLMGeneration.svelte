@@ -12,6 +12,7 @@
     import { messages } from "../../lib/network";
     import type { Message } from "../../lib/openrouter/request";
     import { Ok, type Result } from "../../lib/result";
+    import { get_character } from "../../lib/characters";
 
     export let show_llm_modal: boolean;
     export let text: string;
@@ -48,7 +49,7 @@
             return "";
         }
 
-        return "((Messages from other characters))\n" + $messages.map((m) => `${m.sender}: ${m.message}`).join("\n") + "\n((End of messages))\n";
+        return "((Context))\n" + $messages.map((m) => `${m.sender}: ${m.message}`).join("\n") + "\n((End of context))\n";
 
     }
 
@@ -156,6 +157,8 @@
             role: "user",
             content: get_encapsulated_user_text(text)
         });
+
+        console.log(or_messages);
 
         let result = await open_router_generate($llm_generator!, or_messages);
 
